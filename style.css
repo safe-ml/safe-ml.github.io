@@ -1,0 +1,120 @@
+/* SafeML lab site — plain CSS, no build step. */
+:root {
+  --ink: #24292e;
+  --body: #3d4348;
+  --muted: #6b7076;
+  --faint: #8a8f94;
+  --fainter: #a4a9ae;
+  --accent: #c0392b;
+  --accent-soft: #d4a29b;
+  --rule: #ececec;
+  --rule-strong: #e6e6e6;
+  --band: #f7f7f5;
+  --serif: 'Source Serif 4', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 72px; }
+body { margin: 0; background: #fff; color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.7; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+strong { font-weight: 600; color: var(--ink); }
+h1, h2 { font-family: var(--serif); font-weight: 600; }
+.wrap { max-width: 800px; margin: 0 auto; padding: 0 32px; }
+
+/* Header */
+.site-header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule-strong); }
+.site-header .bar { max-width: 1140px; margin: 0 auto; padding: 0 32px; min-height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 8px 24px; flex-wrap: wrap; }
+.brand { display: flex; align-items: baseline; gap: 12px; color: var(--ink); }
+.brand:hover { text-decoration: none; }
+.brand b { font-family: var(--serif); font-size: 26px; font-weight: 700; letter-spacing: 0.3px; }
+.brand span { font-size: 13px; color: var(--faint); letter-spacing: 0.5px; }
+.site-header nav { display: flex; gap: 26px; flex-wrap: wrap; }
+.site-header nav a { font-size: 15px; color: var(--muted); }
+.site-header nav a.active { color: var(--ink); font-weight: 600; }
+
+/* Pages: one visible at a time (all visible if JS is off) */
+.js .page { display: none; }
+.js .page.active { display: block; }
+.page-body { padding-top: 76px; padding-bottom: 90px; }
+.page-body h1 { font-size: 38px; margin: 0 0 40px; }
+
+/* Home */
+.welcome { padding: 72px 0 64px; }
+.welcome .rule { width: 46px; height: 3px; background: var(--accent); margin-bottom: 26px; }
+.welcome h1 { font-size: 40px; margin: 0 0 26px; line-height: 1.25; }
+.welcome p { margin: 0 0 18px; color: var(--body); }
+.welcome blockquote { margin: 0 0 26px; padding: 4px 0 4px 24px; border-left: 3px solid var(--accent); font-family: var(--serif); font-size: 22px; line-height: 1.5; }
+.numbered { counter-reset: n; margin: 0 0 24px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.numbered li { counter-increment: n; display: grid; grid-template-columns: 40px 1fr; gap: 16px; align-items: start; color: var(--body); }
+.numbered li::before { content: counter(n, decimal-leading-zero); font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--accent-soft); line-height: 1.25; }
+
+.news-band { background: var(--band); border-top: 1px solid var(--rule-strong); padding: 62px 0 78px; }
+.news-band h2 { font-size: 30px; margin: 0 0 28px; }
+.news { margin: 0; padding: 0; list-style: none; }
+.news li { display: grid; grid-template-columns: 128px 1fr; gap: 18px; align-items: baseline; padding: 18px 0; border-top: 1px solid #e4e2dc; color: var(--body); }
+.news li:first-child { border-top: 0; padding-top: 0; }
+.news time { font-size: 13px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--faint); }
+
+/* People */
+.label { font-size: 13px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--faint); margin: 0 0 20px; }
+.group { padding-bottom: 36px; border-bottom: 1px solid var(--rule); margin-bottom: 40px; display: flex; flex-direction: column; gap: 26px; }
+.person { display: flex; gap: 22px; align-items: flex-start; }
+.person img { width: 104px; height: 104px; flex-shrink: 0; border-radius: 50%; object-fit: cover; object-position: 50% 26%; }
+.person.pi img { width: 130px; height: 130px; object-position: 50% 22%; }
+.person h4 { font-size: 19px; font-weight: 600; margin: 0 0 3px; }
+.person.pi h4 { font-size: 21px; }
+.person .role { font-size: 15px; color: var(--body); margin-bottom: 4px; }
+.person .topics { font-size: 14px; color: var(--muted); }
+.person p { font-size: 15px; color: var(--muted); margin: 10px 0 12px; }
+.mentees { margin: 0; padding: 0; list-style: none; }
+.mentees li { display: grid; grid-template-columns: 62px 1fr; gap: 16px; align-items: baseline; padding: 7px 0; font-size: 14.5px; color: var(--muted); }
+.mentees li > span:first-child { font-size: 13px; font-weight: 600; color: var(--fainter); }
+.mentees a { font-weight: 600; }
+.mentees .next { color: var(--fainter); }
+
+/* Publications */
+.lede { color: var(--muted); font-size: 15px; margin: -28px 0 32px; }
+.year { display: grid; grid-template-columns: 74px 1fr; gap: 28px; padding: 26px 0; border-top: 1px solid var(--rule); }
+.year > h3 { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--fainter); margin: 0; padding-top: 1px; line-height: 1.45; }
+.year > div { display: flex; flex-direction: column; gap: 22px; }
+.pub h4 { font-size: 16.5px; font-weight: 600; margin: 0 0 4px; line-height: 1.45; }
+.pub .authors { font-size: 14px; color: var(--muted); line-height: 1.55; }
+.pub .venue { font-size: 13.5px; color: var(--faint); font-style: italic; }
+.page-body h2 { font-size: 26px; margin: 52px 0 18px; }
+.thesis h4 { font-size: 16px; font-weight: 600; margin: 0 0 3px; }
+.thesis div { font-size: 13.5px; color: var(--faint); font-style: italic; margin-bottom: 16px; }
+
+/* Opportunities */
+.big { font-size: 19px; margin: -18px 0 14px; }
+.button { display: inline-block; background: var(--ink); color: #fff; padding: 13px 28px; font-size: 15px; font-weight: 500; border-radius: 4px; }
+.button:hover { text-decoration: none; background: #000; }
+.deflist { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.deflist li { display: grid; grid-template-columns: 172px 1fr; gap: 18px; align-items: baseline; }
+.deflist li > b { font-weight: 600; }
+.deflist li > span { font-size: 15px; color: var(--muted); }
+.note { font-size: 15px; color: var(--muted); margin: 20px 0 0; }
+.faq > div { padding: 20px 0; border-top: 1px solid var(--rule); }
+.faq > div:first-child { border-top: 0; padding-top: 0; }
+.faq h4 { font-size: 16px; font-weight: 600; margin: 0 0 6px; }
+.faq p { font-size: 15px; color: var(--muted); margin: 0; }
+
+/* Affiliations + footer */
+.affil { border-top: 1px solid var(--rule-strong); padding: 52px 32px 56px; text-align: center; }
+.affil .label { font-size: 12px; letter-spacing: 1.8px; color: var(--fainter); margin-bottom: 30px; }
+.affil .logos { display: flex; align-items: center; justify-content: center; gap: 40px 60px; flex-wrap: wrap; }
+.affil img { display: block; width: auto; max-width: 100%; }
+footer { border-top: 1px solid var(--rule-strong); padding: 30px 0; }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 14px; color: var(--faint); }
+footer a { color: var(--faint); }
+
+@media (max-width: 600px) {
+  .wrap, .site-header .bar { padding-left: 16px; padding-right: 16px; }
+  .site-header .bar { padding-top: 10px; padding-bottom: 10px; }
+  .site-header nav { gap: 18px; }
+  .welcome h1 { font-size: 32px; }
+  .page-body h1 { font-size: 32px; }
+  .news li, .deflist li { grid-template-columns: 1fr; gap: 2px; }
+  .person { flex-direction: column; gap: 14px; }
+  .year { grid-template-columns: 1fr; gap: 10px; }
+}
